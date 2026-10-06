@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry</title>
+ <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+   
+}
+header {
+    height: 70px;
+    border-top: 3px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+
+    background: white;
+}
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.logo-icon span {
+    width: 5px;
+    height: 29px;
+    background: #f2a900;
+    border-radius: 50%;  
+}
+nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+nav a {
+    text-decoration: none;
+    color: #111;
+    font-size: 12px;
+}
+nav a:hover {
+    color: #f2a900;
+}
+.dropdown {
+    position: relative;
+}
+.dropdown > a {
+    display: block;
+}
+.dropdown small {
+    font-size: 12px;
+    margin-left: 3px;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 24px;
+    left: -20px;
+    width: 170px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: none;
+    z-index: 100;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 16px 20px;
+    color: #555;
+    font-size: 13px;
+}
+.dropdown-menu a:hover {
+    background: #f7f7f7;
+    color: #f2a900;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.hero {
+    height: 600px;
+    background: linear-gradient(#0009,#0009),
+    url("header-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+.hero-text {
+    width: 750px;
+}
+.hero h1 {
+    font-size: 50px;
+    margin: 20px 0;
+}
+.hero-text p {
+    line-height: 1.7;
+}
+.start {
+    display: inline-block;
+    background: #ffb400;
+    color: white;
+    text-decoration: none;
+    padding: 15px 32px;
+    margin-top: 25px;
+    font-weight: bold;
+}
+.start:hover {
+    background: transparent;
+    border: 1px solid white;
+}
+.services {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 90px 8%;
+}
+.service {
+    width: 28%;
+}
+.service input,
+.market-card input,
+.blog-card input {
+    display: none;
+}
+.icon {
+    width: 70px;
+    height: 70px;
+    border: 6px ridge  #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: 30px;
+    cursor:pointer;
+    transition: .3s;
+}
+.service input:checked + .icon {
+    background: #ffb400;
+    color: white;
+    border-color: #ffb400;
+}
+.service h3 {
+    margin: 35px 0 20px;
+}
+.service p {
+    color: #888;
+    line-height: 1.7;
+}
+.about {
+    padding: 90px 9%;
+    background: #f8f8ff;
+    display: flex;
+    justify-content: space-between;
+}
+.about-text {
+    width: 55%;
+}
+.yellow {
+    color: #ffb400;
+}
+.about h2 {
+    font-size: 38px;
+    margin: 15px 0 25px;
+}
+.about-text p {
+    color: #777;
+    line-height: 1.7;
+}
+.about-btn {
+    display: inline-block;
+    background: #ffb400;
+    color: white;
+    text-decoration: none;
+    padding: 15px 35px;
+    margin-top: 25px;
+}
+.about-btn:active {
+    background: white;
+    color: #111;
+}
+.quote {
+    width: 33%;
+    padding: 30px;
+    background: linear-gradient(#000b,#000b),
+    url("form-bg.jpg");
+    background-size: cover;
+    color: white;
+}
+.quote h2 {
+    margin-bottom: 20px;
+}
+.quote input,
+.quote select,
+.quote textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 3px 0;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+}
+.quote select option {
+    color: #555;
+}
+.quote textarea {
+    height: 110px;
+}
+.quote button {
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    background: #ffb400;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.market {
+    padding: 80px 9%;
+    text-align: center;
+}
+.market > p {
+    color: #888;
+    margin-top: 10px;
+}
+.market-box {
+    display: flex;
+    gap: 30px;
+    margin-top: 50px;
+}
+.market-card {
+    width: 33.33%;
+    text-align: left;
+}
+.market-card label {
+    display: block;
+    cursor: pointer;
+}
+.market-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: .7s;
+}
+.market-card input:checked + label img {
+    transform: rotate(8deg) scale(.95);
+}
+.market-card:has(input:checked) h3 {
+    color: #ffb400;
+}
+.market-card h3 {
+    margin: 20px 0;
+}
+.market-card p {
+    color: #888;
+    line-height: 1.7;
+}
+.counter {
+    padding: 80px 8%;
+    background: linear-gradient(#0018,#0018),
+    url("fact.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    color: white;
+}
+.counter span {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #ffb400;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.counter p {
+    margin-top: 20px;
+}
+.feedback {
+    padding: 80px 8%;
+    background: #222;
+    color: white;
+    text-align: center;
+}
+.feedback h2 {
+    font-size: 38px;
+}
+.feedback > p {
+    margin: 15px 0 40px;
+}
+.feedback-box {
+    display: flex;
+    gap: 25px;
+}
+.feedback-card {
+    width: 33.33%;
+    padding: 30px;
+    background: #333;
+    text-align: left;
+}
+.feedback-card h3 {
+    margin-bottom: 10px;
+}
+.feedback-card p {
+    line-height: 1.7;
+    margin-top: 15px;
+    color: #ccc;
+}
+.stars {
+    color: #ffb400;
+    font-size: 20px;
+}
+.blog {
+    padding: 80px 9%;
+    text-align: center;
+}
+.blog > p {
+    color: #888;
+    margin: 15px 0 40px;
+}
+.blog-box {
+    display: flex;
+    gap: 30px;
+}
+.blog-card {
+    width: 33.33%;
+    text-align: left;
+}
+.blog-card label {
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+}
+.blog-card img {
+    width: 100%;
+    height: 210px;
+    cursor: pointer;
+    transition: 1s;   
+}
+.blog-card input:checked + label img {
+    transform: translateY(-35px) scale(1.08);
+}
+.blog-card:has(input:checked) h3 {
+    color: #ffb400;
+}
+.blog-card h3 {
+    margin: 20px 0;
+}
+.blog-card p {
+    color: #888;
+    line-height: 1.7;
+}
+.footer{
+    background:#03091f;
+    color:#fff;
+    padding:100px 9%;
+}
+.footer-main{
+    display:grid;
+    grid-template-columns:1.5fr 1.5fr .8fr;
+    gap:55px;
+}
+.footer h3{
+    font-size:20px;
+    margin-bottom:26px;
+}
+.footer p{
+    color:#777f98;
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:34px;
+}
+.copyright{
+    color:#777f98;
+    font-size:14px;
+    line-height:1.7;
+}
+.copyright span{
+    color:#ffb400;
+}
+.email-box{
+    display:flex;
+    height:42px;
+    width:100%;
+}
+.email-box input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:0 17px;
+    font-size:14px;
+}
+.email-box button{
+    width:40px;
+    border:0;
+    background:#ffb400;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+}
+.socials{
+    display:flex;
+    gap:25px;
+}
+.socials a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:14px;
+}
+@media(max-width:768px){
+    .footer{
+        padding:60px 8%;
+    }
+    .footer-main{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+}
+@media(max-width: 768px) {
+    .logo-icon,
+    .services,
+    .about,
+    .market-box,
+    .counter,
+    .feedback-box,
+    .blog-box {
+        flex-direction: column;
+    }
+    .service,
+    .about-text,
+    .quote,
+    .market-card,
+    .feedback-card,
+    .blog-card {
+        width: 100%;
+    }
+    .market-card,
+    .blog-card {
+        margin-bottom: 30px;
+    }
+    .hero h1 {
+        font-size: 35px;
+    }
+}
+ </style>
+</head>
+<body>
+<header>
+       <div class="logo-icon">
+            <span><img src="logo.png" alt=""></span>
+    </div>
+    <nav>
+        <a href="#">HOME</a>
+        <a href="#">ABOUT</a>
+        <a href="#">SERVICE</a>
+        <a href="#">PROJECTS</a>
+        <div class="dropdown">
+            <a href="#">BLOG <small>⌄</small></a>
+            <div class="dropdown-menu">
+                <a href="#">Blog Home</a>
+                <a href="#">Blog Single</a>
+            </div>
+        </div>
+        <a href="#">CONTACT</a>
+        <a href="#">ELEMENTS</a>
+    </nav>
+</header>
+<section class="hero">
+    <div class="hero-text">
+        <p>DON'T LOOK FURTHER, HERE IS THE KEY</p>
+        <h1>We're industrial solution</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <a href="#about" class="start">GET STARTED</a>
+    </div>
+</section>
+<section class="services">
+    <div class="service">
+        <input type="checkbox" id="icon1">
+        <label for="icon1" class="icon">⚒</label>
+        <h3>Maintenance</h3>
+        <p>inappropriate behavior is often laughed off as “boys will be boys,”
+        women face higher conduct standards especially in the workplace.</p>
+    </div>
+    <div class="service">
+        <input type="checkbox" id="icon2">
+        <label for="icon2" class="icon">🚀</label>
+        <h3>Residential Service</h3>
+        <p>inappropriate behavior is often laughed off as “boys will be boys,”
+        women face higher conduct standards especially in the workplace.</p>
+    </div>
+    <div class="service">
+        <input type="checkbox" id="icon3">
+        <label for="icon3" class="icon">⚙</label>
+        <h3>Commercial Service</h3>
+        <p>inappropriate behavior is often laughed off as “boys will be boys,”
+        women face higher conduct standards especially in the workplace.</p>
+    </div>
+</section>
+<section class="about" id="about">
+    <div class="about-text">
+        <p class="yellow">Brand new app to blow your mind</p>
+        <h2>We've made a life<br>that will change you</h2>
+        <p>We are here to listen from you deliver excellence</p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim.
+        </p>
+        <a href="#quote" class="about-btn">Get Started Now</a>
+    </div>
+    <div class="quote" id="quote">
+        <h2>Request a Quote</h2>
+        <select>
+            <option>Select Service</option>
+            <option>Service One</option>
+            <option>Service Two</option>
+            <option>Service Three</option>
+            <option>Service Four</option>
+        </select>
+        <input type="text" placeholder="name">
+        <input type="text" placeholder="Phone Number">
+        <input type="email" placeholder="Email Address">
+        <textarea placeholder="Message"></textarea>
+        <button>Request Free Quote</button>
+    </div>
+</section>
+<section class="market">
+    <h2>Our Capturing Market Sectors</h2>
+    <p>Who are in extremely love with eco friendly system..</p>
+    <div class="market-box">
+        <div class="market-card">
+            <input type="checkbox" id="market1">
+            <label for="market1">
+                <img src="s1.jpg">
+            </label>
+            <h3>Automotive Engineering</h3>
+            <p>inappropriate behavior is often laughed off as
+            “boys will be boys,” women face higher conduct.</p>
+        </div>
+        <div class="market-card">
+            <input type="checkbox" id="market2">
+            <label for="market2">
+                <img src="s2.jpg">
+            </label>
+            <h3>Construction & Engineering</h3>
+            <p>inappropriate behavior is often laughed off as
+            “boys will be boys,” women face higher conduct.</p>
+        </div>
+        <div class="market-card">
+            <input type="checkbox" id="market3">
+            <label for="market3">
+                <img src="s3.jpg">
+            </label>
+            <h3>Industrial Engineering</h3>
+            <p>inappropriate behavior is often laughed off as
+            “boys will be boys,” women face higher conduct.</p>
+        </div>
+    </div>
+</section>
+<section class="counter">
+    <div>
+        <span>2K+</span>
+        <p>Projects Completed</p>
+    </div>
+    <div>
+        <span>5.5K</span>
+        <p>Total Employees</p>
+    </div>
+    <div>
+        <span>959</span>
+        <p>Happy Clients</p>
+    </div>
+    <div>
+        <span>367</span>
+        <p>Tickets Submitted</p>
+    </div>
+</section>
+<section class="feedback">
+    <h2>Enjoy our Client's Feedback</h2>
+    <p>Who are in extremely love with eco friendly system..</p>
+    <div class="feedback-box">
+        <div class="feedback-card">
+            <h3>Fannie Rowe</h3>
+            <div class="stars">★★★★★</div>
+            <p>Accessories Here you can find the best computer
+            accessory for your laptop, monitor, printer, scanner.</p>
+        </div>
+        <div class="feedback-card">
+            <h3>Fannie Rowe</h3>
+            <div class="stars">★★★★☆</div>
+            <p>Accessories Here you can find the best computer
+            accessory for your laptop, monitor, printer, scanner.</p>
+        </div>
+        <div class="feedback-card">
+            <h3>Fannie Rowe</h3>
+            <div class="stars">★★★★★</div>
+            <p>Accessories Here you can find the best computer
+            accessory for your laptop, monitor, printer, scanner.</p>
+        </div>
+    </div>
+</section>
+<section class="blog">
+    <h2>Latest Posts From Our Blog</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    sed do eiusmod tempor incididunt ut labore.</p>
+    <div class="blog-box">
+        <div class="blog-card">
+            <input type="checkbox" id="blog1">
+            <label for="blog1">
+                <img src="b1.jpg">
+            </label>
+            <h3>PORTABLE FASHION FOR YOUNG WOMEN</h3>
+            <p>Lorem ipsum dolor sit amet, constetur adipisicing elit,
+            sed do eiusmod tempor incididunt.</p>
+        </div>
+        <div class="blog-card">
+            <input type="checkbox" id="blog2">
+            <label for="blog2">
+                <img src="b2.jpg">
+            </label>
+            <h3>PORTABLE FASHION FOR YOUNG WOMEN</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt.</p>
+        </div>
+        <div class="blog-card">
+            <input type="checkbox" id="blog3">
+            <label for="blog3">
+                <img src="b3.jpg">
+            </label>
+            <h3>PORTABLE FASHION FOR YOUNG WOMEN</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt.</p>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="footer-main">
+        <div>
+            <h3>About Us</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
+            </p>
+            <div class="copyright">
+                <span>♡</span> by <span>Colorlib</span>
+            </div>
+        </div>
+        <div>
+            <h3>Newsletter</h3>
+            <p>Stay update with our latest</p>
+            <div class="email-box">
+                <input type="email" placeholder="Enter Email">
+                <button>→</button>
+            </div>
+        </div>
+        <div>
+            <h3>Follow Us</h3>
+            <p>Let us be social</p>
+            <div class="socials">
+                <a href="#">f</a>
+                <a href="#">♥</a>
+                <a href="#">◉</a>
+                <a href="#">Bē</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
