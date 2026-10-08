@@ -422,44 +422,114 @@ nav a:hover {
     font-weight:bold;
     font-size:14px;
 }
-@media(max-width:768px){
-    .footer{
-        padding:60px 8%;
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 18px 5%;
+        flex-direction: column;
+        gap: 11px;
     }
-    .footer-main{
-        grid-template-columns:1fr;
-        gap:40px;
+    nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px ;
     }
-}
-@media(max-width: 768px) {
-   
-    .services,
-    .about,
+    nav a {
+        font-size: 11px;
+    }
+    .dropdown-menu {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .hero {
+        height: 520px;
+        padding: 30px 6%;
+    }
+    .hero-text {
+        width: 100%;
+    }
+    .hero h1 {
+        font-size: 34px;
+        line-height: 1.3;
+    }
+    .hero-text p {
+        font-size: 14px;
+    }
+    .services {
+        padding: 55px 7%;
+        gap: 45px;
+    }
+    .service {
+        width: 100%;
+    }
+    .about {
+        padding: 55px 7%;
+        flex-direction: column;
+        gap: 40px;
+    }
+    .about-text,
+    .quote {
+        width: 100%;
+    }
+    .about h2 {
+        font-size: 30px;
+    }
+    .quote {
+        padding: 25px;
+    }
+    .market {
+        padding: 55px 7%;
+    }
     .market-box,
-    .counter,
     .feedback-box,
     .blog-box {
-        flex-direction:coloumn;
+        flex-direction: column;
+        gap: 35px;
     }
-
-    .service,
-    .about-text,
-    .quote,
     .market-card,
     .feedback-card,
     .blog-card {
         width: 100%;
+        margin-bottom: 0;
     }
-    .market-card,
-    .blog-card {
-        margin-bottom: 30px;
+    .market-card img {
+        height: 220px;
     }
-    .hero h1 {
-        font-size: 35px;
+    .counter {
+        padding: 55px 7%;
+        flex-direction: column;
+        gap: 35px;
     }
-.logo-icon{
-flex-direction:row !important;
-}
+    .feedback {
+        padding: 55px 7%;
+    }
+    .feedback h2 {
+        font-size: 30px;
+    }
+    .feedback-card {
+        padding: 25px;
+    }
+    .blog {
+        padding: 55px 7%;
+    }
+    .blog h2 {
+        font-size: 30px;
+    }
+    .blog-card img {
+        height: 220px;
+        object-fit: cover;
+    }
+    .footer {
+        padding: 55px 7%;
+    }
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+    .socials {
+        gap: 20px;
+    }
 }
  </style>
 </head>
